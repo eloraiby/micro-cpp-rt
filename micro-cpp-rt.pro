@@ -10,7 +10,7 @@ TARGET = micro-cpp-rt
 TEMPLATE = lib
 CONFIG += staticlib
 
-QMAKE_CXXFLAGS	+= -std=c++11 -fno-exceptions -fno-rtti -fvisibility=hidden -fvisibility-inlines-hidden -pedantic -ffunction-sections -fdata-sections
+QMAKE_CXXFLAGS	+= -DBUILDING_MICROCPP_RT_STATIC -std=c++11 -fno-exceptions -fno-rtti -fvisibility=hidden -fvisibility-inlines-hidden -pedantic -ffunction-sections -fdata-sections
 
 SOURCES += microcpprt.cpp
 
