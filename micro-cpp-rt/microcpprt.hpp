@@ -2,7 +2,20 @@
 #define MICROCPPRT_HPP
 
 #include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <cstdint>
+#include <climits>
+
 #include <cassert>
+
+#ifdef max
+#	undef max
+#endif
+
+#ifdef min
+#	undef min
+#endif
 
 #ifndef MICROCPP_RT_API
 #	ifdef BUILDING_MICROCPP_RT_STATIC
@@ -42,5 +55,21 @@ MICROCPP_RT_API void*	operator new[](size_t s)		noexcept;
 MICROCPP_RT_API void	operator delete[](void* p)		noexcept;
 MICROCPP_RT_API void*	operator new(size_t /*s*/, void* p)	noexcept;
 MICROCPP_RT_API void*	operator new[](size_t /*s*/, void* p)	noexcept;
+
+namespace mcpp {
+
+	template <typename T>
+	T min(const T& a, const T& b) noexcept { return a < b ? a : b; }
+
+	template <typename T>
+	T max(const T& a, const T& b) noexcept { return a > b ? a : b; }
+
+
+	template <typename T>
+	void fill_n(T* arr, size_t s, const T& val) noexcept { for( size_t i = 0; i < s; ++i ) arr[i] = val; }
+
+}
+
+#include "system.hpp"
 
 #endif // MICROCPPRT_HPP
